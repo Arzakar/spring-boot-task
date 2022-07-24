@@ -45,6 +45,7 @@ public class CelestialBodyController {
         return celestialBodyService.update(celestialBodyDto);
     }
 
+
     @DeleteMapping(path = "/{name}")
     public CelestialBodyDto deleteByName(@PathVariable("name") String name) {
         return celestialBodyService.deleteByName(name);
