@@ -9,10 +9,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.mvcMatcher("/celestial-bodies/**")
-                .authorizeRequests()
-                .mvcMatchers("/celestial-bodies/**").access("hasAuthority('SCOPE_message.read')")
-                .and()
+        http.cors().and().csrf().disable()
                 .oauth2ResourceServer()
                 .jwt();
     }

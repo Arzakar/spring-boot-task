@@ -7,8 +7,10 @@ import org.springframework.security.config.annotation.web.configuration.OAuth2Au
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.keys.KeyManager;
 import org.springframework.security.crypto.keys.StaticKeyGeneratingKeyManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
@@ -25,14 +27,14 @@ public class AuthorizationServerConfig {
 	@Bean
 	public RegisteredClientRepository registeredClientRepository() {
 		RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
-				.clientId("messaging-client")
+				.clientId("client")
 				.clientSecret("secret")
 				.clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 				.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
 				.redirectUri("http://localhost:8080/authorized")
-				.scope("message.read")
-				.scope("message.write")
+				.scope("read")
+				.scope("write")
 				.clientSettings(clientSettings -> clientSettings.requireUserConsent(true))
 				.build();
 		return new InMemoryRegisteredClientRepository(registeredClient);
@@ -45,11 +47,23 @@ public class AuthorizationServerConfig {
 
 	@Bean
 	public UserDetailsService users() {
-		UserDetails user = User.withDefaultPasswordEncoder()
-				.username("user1")
-				.password("password")
-				.roles("USER")
+		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		UserDetails doctor = User.builder()
+				.username("doctor")
+				.password("doctor_password")
+				.passwordEncoder(passwordEncoder::encode)
+				.roles("DOCTOR")
+				.authorities("REDACTOR", "READER")
 				.build();
-		return new InMemoryUserDetailsManager(user);
+
+		UserDetails student = User.builder()
+				.username("student")
+				.password("student_password")
+				.passwordEncoder(passwordEncoder::encode)
+				.roles("STUDENT")
+				.authorities("READER")
+				.build();
+
+		return new InMemoryUserDetailsManager(doctor, student);
 	}
 }

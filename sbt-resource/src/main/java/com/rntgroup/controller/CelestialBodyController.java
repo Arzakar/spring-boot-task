@@ -6,6 +6,7 @@ import com.rntgroup.service.CelestialBodyService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -31,22 +32,26 @@ public class CelestialBodyController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('SCOPE_write')")
     public CelestialBodyDto create(@RequestBody CelestialBodyDto celestialBodyDto) {
         return celestialBodyService.create(celestialBodyDto);
     }
 
     @GetMapping(path = "/{name}")
+    @PreAuthorize("hasAuthority('SCOPE_read')")
     public CelestialBodyDto getByName(@PathVariable("name") String name) {
         return celestialBodyService.getByName(name);
     }
 
     @PatchMapping
+    @PreAuthorize("hasAuthority('SCOPE_write')")
     public CelestialBodyDto update(@RequestBody CelestialBodyDto celestialBodyDto) {
         return celestialBodyService.update(celestialBodyDto);
     }
 
 
     @DeleteMapping(path = "/{name}")
+    @PreAuthorize("hasAuthority('SCOPE_write')")
     public CelestialBodyDto deleteByName(@PathVariable("name") String name) {
         return celestialBodyService.deleteByName(name);
     }
