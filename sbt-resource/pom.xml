@@ -7,7 +7,7 @@
     <parent>
         <artifactId>spring-boot-task</artifactId>
         <groupId>com.rntgroup</groupId>
-        <version>0.0.0</version>
+        <version>1.1.0</version>
     </parent>
 
     <artifactId>sbt-resource</artifactId>

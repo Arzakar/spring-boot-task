@@ -12,7 +12,7 @@
 
 	<groupId>com.rntgroup</groupId>
 	<artifactId>spring-boot-task</artifactId>
-	<version>0.0.0</version>
+	<version>1.1.0</version>
 	<packaging>pom</packaging>
 
 	<name>spring-boot-task</name>
