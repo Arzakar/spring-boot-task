@@ -1,6 +1,5 @@
 package com.rntgroup.model;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +17,7 @@ import javax.persistence.Table;
 @Accessors(chain = true)
 @NoArgsConstructor
 @Entity
-@Table(name = "air_tickets")
+@Table(name = "celestial_bodies")
 public class CelestialBody {
 
     @Id
