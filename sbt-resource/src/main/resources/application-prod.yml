@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:spring-boot-prod-db
+    url: jdbc:h2:file:./db/prod/spring-boot-prod-db
     username: prod-admin
     password: prod
 
