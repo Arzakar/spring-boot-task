@@ -2,7 +2,6 @@ package com.rntgroup.service;
 
 import com.rntgroup.dto.CelestialBodyDto;
 import com.rntgroup.exception.CelestialBodyException.CelestialBodyBadRequestException;
-import com.rntgroup.exception.CelestialBodyException.CelestialBodyNotFoundByIdException;
 import com.rntgroup.exception.CelestialBodyException.CelestialBodyNotFoundByNameException;
 import com.rntgroup.mapper.CelestialBodyMapper;
 import com.rntgroup.model.CelestialBody;
@@ -11,7 +10,6 @@ import com.rntgroup.repository.CelestialBodyRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
