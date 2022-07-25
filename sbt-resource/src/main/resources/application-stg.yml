@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:spring-boot-stg-db
+    url: jdbc:h2:file:./db/stg/spring-boot-stg-db
     username: stg-admin
     password: stg
 

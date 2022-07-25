@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:spring-boot-dev-db
+    url: jdbc:h2:file:./db/dev/spring-boot-dev-db
     username: dev-admin
     password: dev
 
