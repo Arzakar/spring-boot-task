@@ -6,13 +6,6 @@ public class CelestialBodyException extends RuntimeException {
         super(message);
     }
 
-    public static class CelestialBodyNotFoundByIdException extends CelestialBodyException {
-
-        public CelestialBodyNotFoundByIdException(Long id) {
-            super(String.format("CelestialBody not found by id = %d", id));
-        }
-    }
-
     public static class CelestialBodyNotFoundByNameException extends CelestialBodyException {
 
         public CelestialBodyNotFoundByNameException(String name) {
