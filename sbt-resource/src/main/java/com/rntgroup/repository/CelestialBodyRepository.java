@@ -13,5 +13,5 @@ public interface CelestialBodyRepository extends JpaRepository<CelestialBody, Lo
     Optional<CelestialBody> findByName(String name);
 
     @Transactional
-    CelestialBody deleteByName(String name);
+    Long deleteByName(String name);
 }

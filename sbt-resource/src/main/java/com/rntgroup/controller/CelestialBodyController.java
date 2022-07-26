@@ -52,7 +52,7 @@ public class CelestialBodyController {
 
     @DeleteMapping(path = "/{name}")
     //@PreAuthorize("hasAuthority('SCOPE_write')")
-    public CelestialBodyDto deleteByName(@PathVariable("name") String name) {
+    public Long deleteByName(@PathVariable("name") String name) {
         return celestialBodyService.deleteByName(name);
     }
 }

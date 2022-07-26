@@ -50,8 +50,8 @@ public class CelestialBodyService {
         return celestialBodyMapper.toDto(celestialBodyRepository.save(updatableCelestialBody));
     }
 
-    public CelestialBodyDto deleteByName(String name) {
-        return celestialBodyMapper.toDto(celestialBodyRepository.deleteByName(name));
+    public Long deleteByName(String name) {
+        return celestialBodyRepository.deleteByName(name);
     }
 
 }
